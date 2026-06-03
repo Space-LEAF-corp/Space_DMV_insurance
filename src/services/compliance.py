@@ -1,4 +1,4 @@
-from ..models.asset import SpaceAsset
+from models.asset import SpaceAsset
 
 def is_asset_safety_compliant(asset: SpaceAsset) -> bool:
     """

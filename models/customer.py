@@ -1,8 +1,7 @@
-from pydantic import BaseModel, EmailStr
-from typing import Optional
+from pydantic import BaseModel, EmailStr  # type: ignore[import]
 from datetime import date
 
-class Customer(BaseModel):
+class Customer(BaseModel):  # type: ignore[reportUntypedBaseClass]
     id: str
     full_name: str
     email: EmailStr

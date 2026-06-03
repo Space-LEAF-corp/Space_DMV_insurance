@@ -1,5 +1,3 @@
-from typing import Literal
-
 JurisdictionCode = str  # keep flexible, but you can narrow later
 
 def validate_jurisdiction(jurisdiction: JurisdictionCode) -> bool:

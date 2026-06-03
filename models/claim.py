@@ -1,7 +1,7 @@
-from pydantic import BaseModel
+from pydantic import BaseModel  # type: ignore[reportUnknownVariableType]
 from datetime import datetime
 
-class Claim(BaseModel):
+class Claim(BaseModel):  # type: ignore[reportUntypedBaseClass]
     id: str
     policy_id: str
     asset_id: str

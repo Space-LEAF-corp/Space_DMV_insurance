@@ -1,6 +1,6 @@
 from typing import List
-from ..models.asset import SpaceAsset
-from ..models.policy import CoverageItem
+from models.asset import SpaceAsset
+from models.policy import CoverageItem
 
 def base_rate_for_environment(env: str) -> float:
     table = {
