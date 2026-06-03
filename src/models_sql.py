@@ -8,7 +8,7 @@ from .db import Base as _Base  # type: ignore[import]
 # complaints about an untyped declarative base class.
 Base = _Base  # type: ignore[reportUnknownVariableType]
 
-class CustomerORM(Base):
+class CustomerORM(Base): # pyright: ignore[reportUntypedBaseClass]
     __tablename__ = "customers"
     id: Mapped[str] = mapped_column(String, primary_key=True, index=True)  # type: ignore[reportUnknownVariableType]
     full_name: Mapped[str] = mapped_column(String, nullable=False)  # type: ignore[reportUnknownVariableType]
@@ -20,7 +20,7 @@ class CustomerORM(Base):
     policies: Mapped[List["PolicyORM"]] = relationship("PolicyORM", back_populates="customer")  # type: ignore[reportUnknownVariableType]
 
 
-class PolicyORM(Base):
+class PolicyORM(Base): # pyright: ignore[reportUntypedBaseClass]
     __tablename__ = "policies"
     id: Mapped[str] = mapped_column(String, primary_key=True, index=True)  # type: ignore[reportUnknownVariableType]
     customer_id: Mapped[str] = mapped_column(String, ForeignKey("customers.id"), nullable=False)  # type: ignore[reportUnknownVariableType]
@@ -35,7 +35,7 @@ class PolicyORM(Base):
     audit_logs: Mapped[List["UnderwritingAuditORM"]] = relationship("UnderwritingAuditORM", back_populates="policy")  # type: ignore[reportUnknownVariableType]
 
 
-class CoverageItemORM(Base):
+class CoverageItemORM(Base): # pyright: ignore[reportUntypedBaseClass]
     __tablename__ = "coverage_items"
     id: Mapped[str] = mapped_column(String, primary_key=True)  # type: ignore[reportUnknownVariableType]
     policy_id: Mapped[str] = mapped_column(String, ForeignKey("policies.id"), nullable=False)  # type: ignore[reportUnknownVariableType]
@@ -46,7 +46,7 @@ class CoverageItemORM(Base):
 
     policy: Mapped["PolicyORM"] = relationship("PolicyORM", back_populates="coverage_items")  # type: ignore[reportUnknownVariableType]
 
-class UnderwritingAuditORM(Base):
+class UnderwritingAuditORM(Base): # pyright: ignore[reportUntypedBaseClass]
     __tablename__ = "underwriting_audit_logs"
     id: Mapped[str] = mapped_column(String, primary_key=True)  # type: ignore[reportUnknownVariableType]
     policy_id: Mapped[str] = mapped_column(String, ForeignKey("policies.id"), nullable=False)  # type: ignore[reportUnknownVariableType]

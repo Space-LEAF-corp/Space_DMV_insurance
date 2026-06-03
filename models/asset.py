@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel  # type: ignore[attr-defined]
 from typing import Literal
 
 SpaceAssetType = Literal[
@@ -9,7 +9,7 @@ SpaceAssetType = Literal[
     "ground_control_terminal"
 ]
 
-class SpaceAsset(BaseModel):
+class SpaceAsset(BaseModel):  # type: ignore[misc]
     id: str
     owner_id: str
     asset_type: SpaceAssetType
