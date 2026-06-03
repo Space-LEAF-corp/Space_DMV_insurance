@@ -4,6 +4,8 @@ from typing import List
 from sqlalchemy import String, Boolean, Date, Float, ForeignKey, Text  # type: ignore[import]
 from sqlalchemy.orm import DeclarativeMeta, Mapped, mapped_column, relationship  # type: ignore[import]
 from .db import Base as _Base  # type: ignore[import]
+# Keep the SQLAlchemy Base with a simple assignment to avoid type-checker
+# complaints about an untyped declarative base class.
 Base = _Base  # type: ignore[reportUnknownVariableType]
 
 class CustomerORM(Base):
@@ -42,9 +44,7 @@ class CoverageItemORM(Base):
     limit_usd: Mapped[float] = mapped_column(Float, nullable=False)  # type: ignore[reportUnknownVariableType]
     deductible_usd: Mapped[float] = mapped_column(Float, nullable=False)  # type: ignore[reportUnknownVariableType]
 
-    policy: Mapped["PolicyORM"] = relationship("PolicyORM", back_populates="coverage_items")
-    # type: ignore[reportUnknownVariableType]
-
+    policy: Mapped["PolicyORM"] = relationship("PolicyORM", back_populates="coverage_items")  # type: ignore[reportUnknownVariableType]
 
 class UnderwritingAuditORM(Base):
     __tablename__ = "underwriting_audit_logs"
